@@ -9,20 +9,20 @@ class Breadth:
         self.border = Queue(20)
         self.border.enqueue(start)
         self.found = False
+        self.visited_cities = []
 
     def search(self):
         first = self.border.getFirst()
-        print('Primeiro: {}'.format(first.name))
+        self.visited_cities.append(first.name)
 
         if first == self.goal:
             self.found = True
         else:
-            temp = self.border.dequeue()
-            print('Desenfileirou: {}'.format(temp.name))
+            self.border.dequeue()
             for a in first.adjacent:
-                print('Verificando se já visitado: {}'.format(a.city.name))
                 if a.city.visited == False:
                     a.city.visited = True
                     self.border.enqueue(a.city)
             if self.border.numberElements > 0:
                 Breadth.search(self)
+        return self.visited_cities
