@@ -10,11 +10,15 @@ Search Algorithms
   </a>
 </p>
 
+## 📋 Features
+
+- **Matplotlib**  — A library for creating graphs and data visualizations in general
+
 ## 🚀 Getting started
 
 1. Clone this repo using `git clone https://github.com/victor3r/search-algorithms.git`
 2. Move yourself to the appropriate directory: `cd search-algorithms`<br />
-3. Choose the algorithm to find the best route
+3. Run `python Main.py` to execute the script
 
 ## 📝 License
 
