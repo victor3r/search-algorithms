@@ -42,7 +42,7 @@ print('BFS: {}\n'.format(' -> '.join(visited_cities_breadth)))
 print('Gulosa: {}\n'.format(' -> '.join(visited_cities_greedy)))
 print('A*: {}\n'.format(' -> '.join(visited_cities_astar)))
 
-fig, (ax1, ax2) = plt.subplots(1, 2)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 fig.suptitle('Comparação entre os algoritmos')
 ax1.bar(search_algorithms, number_visited_cities)
 ax1.set_ylabel('Cidades visitadas')
@@ -53,3 +53,5 @@ search_algorithms = ['Gulosa', 'A*']
 ax2.bar(search_algorithms, travelled_distance)
 ax2.set_ylabel('Distância percorrida (km)')
 ax2.set_xlabel('Algoritmos de busca com informação')
+
+plt.show()
