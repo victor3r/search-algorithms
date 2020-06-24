@@ -12,17 +12,28 @@ map_breadth = Map()
 map_greedy = Map()
 map_astar = Map()
 
-depth = Depth(map_depth.portoUniao, map_depth.curitiba)
-breadth = Breadth(map_breadth.portoUniao, map_breadth.curitiba)
-greedy = Greedy(map_greedy.curitiba)
-astar = AStar(map_astar.curitiba)
+cities = [c for c in dir(Map()) if c[0] != '_']
+
+for i in range(len(cities)):
+    print('{} - {}'.format(i+1, getattr(Map(), cities[i]).name))
+
+start = int(input('Escolha o ponto de partida: '))
+end = int(input('Escolha o destino: '))
+print('\n')
+
+depth = Depth(
+    getattr(map_depth, cities[start - 1]), getattr(map_depth, cities[end - 1]))
+breadth = Breadth(
+    getattr(map_breadth, cities[start - 1]), getattr(map_breadth, cities[end - 1]))
+greedy = Greedy(getattr(map_greedy, cities[end - 1]))
+astar = AStar(getattr(map_astar, cities[end - 1]))
 
 number_visited_cities = []
 travelled_distance = []
 search_algorithms = ['DFS', 'BFS', 'Gulosa', 'A*']
 
-greedy_values = greedy.search(map_greedy.portoUniao)
-astar_values = astar.search(map_astar.portoUniao)
+greedy_values = greedy.search(getattr(map_greedy, cities[start - 1]))
+astar_values = astar.search(getattr(map_astar, cities[start - 1]))
 
 visited_cities_depth = depth.search()
 visited_cities_breadth = breadth.search()
